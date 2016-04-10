@@ -1,6 +1,6 @@
 {
   "name": "simple-note",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Simple way for taking note note Cozy application",
   "main": "server.js",
   "dependencies": {
@@ -16,6 +16,10 @@
     "start": "node server.js",
     "dev": "node_modules/.bin/nodemon server.js --ignore client/"
   },
+  "cozy-permissions": {
+    "Note": {
+      "description": "Creates and edits your notes."
+    },
   "repository": {
     "type": "git",
     "url": "https://github.com/troopa81/cozy-simple-note.git"

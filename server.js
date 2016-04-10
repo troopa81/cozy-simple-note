@@ -35,7 +35,7 @@ var server = app.listen(9250, function () {
   var host = server.address().address;
   var port = server.address().port;
 
-  console.log('Cozy tutorial app listening at http://%s:%s', host, port);
+  console.log('Cozy Simple note listenning at http://%s:%s', host, port);
 });
 
 });
