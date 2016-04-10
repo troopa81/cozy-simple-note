@@ -19,7 +19,8 @@
   "cozy-permissions": {
     "Note": {
       "description": "Creates and edits your notes."
-    },
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/troopa81/cozy-simple-note"
