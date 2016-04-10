@@ -1,6 +1,6 @@
 {
   "name": "simple-note",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Simple way for taking note note Cozy application",
   "main": "server.js",
   "dependencies": {
