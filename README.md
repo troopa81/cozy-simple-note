@@ -1,2 +1,2 @@
-# cozy-simple-note
-https://github.com/troopa81/cozy-simple-note.git
+# Cozy Simple note
+Simple way for taking note note Cozy application
