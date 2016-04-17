@@ -1,25 +1,4 @@
-
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
-var morgan = require('morgan');
-
-/*
-    Configuration section.
-*/
-app.use(bodyParser.json());
-app.use(morgan('dev'));
-app.use(express.static('client'));
-
-
-/*
-    Define routes and their handler.
-*/
-var indexController = require('./server/controllers/index');
-app.use(indexController);
-
-var noteController = require('./server/controllers/note');
-app.use(noteController);
+var americano = require('americano');
 
 var cozydb = require('cozydb');
 
@@ -28,14 +7,15 @@ var cozydb = require('cozydb');
 */
 cozydb.configure(__dirname, null, function() {
 
-/*
-    Start the HTTP server.
-*/
-var server = app.listen(9250, function () {
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log('Cozy Simple note listenning at http://%s:%s', host, port);
-});
+	var options = {
+		name: 'SimpleNote',
+		root: __dirname,
+		port: process.env.PORT || 9250,
+		host: process.env.HOST || '127.0.0.1',
+	};
+	
+	americano.start(options, function () {
+		console.log('Cozy Simple note listenning at http://%s:%s', options.host, options.port);
+	});
 
 });
