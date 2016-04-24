@@ -70,7 +70,7 @@ function createNoteHandler() {
 
         $.ajax({
             'method': 'POST',
-            'url': '/note',
+            'url': './note',
             'data': payload,
             'headers': {
                 'content-type': 'application/json'
@@ -112,7 +112,7 @@ function listNoteHandler() {
 
         $.ajax({
             'method': 'GET',
-            'url': '/notes/',
+            'url': 'notes',
             'complete': function(xhr, textStatus) {
                 $resultStatus.html(xhr.status);
 
