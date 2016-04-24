@@ -36,5 +36,7 @@
 	"bugs": {
 		"url": "https://github.com/troopa81/cozy-simple-note/issues"
 	},
-	"homepage": "https://github.com/troopa81/cozy-simple-note"
+	"cozy-displayName": "Simple Note",
+	"homepage": "https://github.com/troopa81/cozy-simple-note",
+	"cozy-color": "#FAF98B"
 }

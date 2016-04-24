@@ -70,7 +70,7 @@ function createNoteHandler() {
 
         $.ajax({
             'method': 'POST',
-            'url': './note',
+            'url': 'note',
             'data': payload,
             'headers': {
                 'content-type': 'application/json'
