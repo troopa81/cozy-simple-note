@@ -23,5 +23,8 @@ module.exports = {
     ],
     production: [
         americano.logger('short')
-    ]
+    ],
+    plugins: [
+        'cozydb',
+    ],
 };
