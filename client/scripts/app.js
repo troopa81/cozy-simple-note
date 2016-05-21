@@ -16,14 +16,18 @@ app.config(function($routeProvider, $locationProvider){
     $locationProvider.html5Mode(true);
 });
 
-app.controller('mainController', ['$scope', function($scope) {
-/*
-  $scope.toggleSidenav = function(menuId) {
-    $mdSidenav(menuId).toggle();
-  };
-*/
- 
-}]);
+app.controller('mainController', function($scope, $http) {
+
+	// get notes
+	$http({
+		method: 'GET',
+		url: 'notes'
+	}).then(function successCallback(response) {
+		$scope.notes = response.data
+	}, function errorCallback(response) {
+		console.log("error=" + response);
+	});
+});
 
 app.controller('editController', ['$scope', function($scope) {
  
