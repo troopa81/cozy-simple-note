@@ -2,7 +2,7 @@
   <div role="main">
 	<md-content>
 	  <md-list ng-cloak>
-		<md-list-item class="md-3-line md-long-text" ng-click="note" ng-repeat="note in notes">
+		<md-list-item class="md-3-line md-long-text" ng-click="edit(note.id)" ng-repeat="note in notes">
           <div class="md-list-item-text">
 			<h3>{{note.title}}</h3>
 			<p>

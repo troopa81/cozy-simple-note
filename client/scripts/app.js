@@ -3,20 +3,27 @@ var app = angular.module('SimpleNoteApp', ['ngMaterial', 'ngRoute'] );
 
 app.config(function($routeProvider, $locationProvider){
 	$routeProvider
-		.when( '/', {
-			templateUrl : 'listNotes.html', 
-			controller : 'mainController'
-		})
-		.when ( '/edit', {
+// 		.when ( '/edit:noteId', {
+ 		.when ( '/edit', {
 			templateUrl : 'editNote.html', 
 			controller : 'editController'
-		}); 
+		}) 
+  		.otherwise( {
+			templateUrl : 'listNotes.html', 
+			controller : 'mainController'
+		});
 
 	// use the HTML5 History API
     $locationProvider.html5Mode(true);
 });
 
-app.controller('mainController', function($scope, $http) {
+app.controller('mainController', function($scope, $http, $location) {
+
+	$scope.edit = function ( noteId ) {
+//		$location.path( "edit/" + noteId );
+		$location.path( "/edit"  );
+
+	};
 
 	// get notes
 	$http({
