@@ -3,8 +3,7 @@ var app = angular.module('SimpleNoteApp', ['ngMaterial', 'ngRoute'] );
 
 app.config(function($routeProvider, $locationProvider){
 	$routeProvider
-// 		.when ( '/edit:noteId', {
- 		.when ( '/edit', {
+ 		.when ( '/edit/:noteId', {
 			templateUrl : 'editNote.html', 
 			controller : 'editController'
 		}) 
@@ -20,9 +19,7 @@ app.config(function($routeProvider, $locationProvider){
 app.controller('mainController', function($scope, $http, $location) {
 
 	$scope.edit = function ( noteId ) {
-//		$location.path( "edit/" + noteId );
-		$location.path( "/edit"  );
-
+		$location.path( "edit/" + noteId );
 	};
 
 	// get notes
@@ -36,9 +33,21 @@ app.controller('mainController', function($scope, $http, $location) {
 	});
 });
 
-app.controller('editController', ['$scope', function($scope) {
+app.controller('editController', function($scope, $routeParams, $http) {
  
-}]);
+	console.log( $routeParams.noteId );
+
+	// get notes
+	$http({
+		method: 'GET',
+		url: 'note/' + $routeParams.noteId
+	}).then(function successCallback(response) {
+		$scope.note = response.data
+	}, function errorCallback(response) {
+		console.log("error=" + response);
+	});
+	
+});
 
 // function routerHandler() {
 

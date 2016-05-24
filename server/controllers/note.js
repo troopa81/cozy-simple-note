@@ -24,3 +24,15 @@ module.exports.list = function(req, res, next) {
     });
 };
 
+// Find a note
+module.exports.find = function(req, res, next) {
+
+    Note.find( req.params.noteId, function(err, note) {
+        if(err) {
+            next(err);
+        } else {
+            res.status(200).json(note);
+        }
+    });
+};
+

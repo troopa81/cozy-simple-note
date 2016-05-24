@@ -7,8 +7,10 @@ module.exports = {
 	},
 	'note': {
         post: note.create,
-		
     },
+	'note/:noteId' : {
+		get: note.find
+	},
 	'notes': {
         get: note.list,
     },
