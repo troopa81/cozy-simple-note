@@ -33,9 +33,7 @@ app.controller('mainController', function($scope, $http, $location) {
 	});
 });
 
-app.controller('editController', function($scope, $routeParams, $http) {
- 
-	console.log( $routeParams.noteId );
+app.controller('editController', function($scope, $routeParams, $http, $timeout) {
 
 	// get notes
 	$http({
@@ -46,7 +44,22 @@ app.controller('editController', function($scope, $routeParams, $http) {
 	}, function errorCallback(response) {
 		console.log("error=" + response);
 	});
-	
+
+	// save in back-end on modifications
+	$scope.saveNote = function() {
+		
+		console.log("coucou")
+		// get notes
+		$http({
+			method: 'PUT',
+			url: 'note/' + $scope.note.id,
+			data: $scope.note
+		}).then(function successCallback(response) {
+			console.log("test")
+		}, function errorCallback(response) {
+			console.log("error=" + response);
+		});
+	};
 });
 
 // function routerHandler() {

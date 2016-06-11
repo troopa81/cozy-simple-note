@@ -12,6 +12,18 @@ module.exports.create = function(req, res, next) {
     });
 };
 
+module.exports.update = function(req, res, next) {
+    
+	Note.save(req.params.noteId, req.body, function(err, quoi){
+        if (err) {
+			next(err);
+        } else {
+            res.status(200);
+        }
+    });
+}
+
+
 // List of all notes
 module.exports.list = function(req, res, next) {
 

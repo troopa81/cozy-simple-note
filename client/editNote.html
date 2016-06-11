@@ -1,10 +1,13 @@
 <div class="jumbotron text-center">
   <md-input-container>
-    <label>Title</label>
-    <input ng-model="note.title">
+    <label>Titlatate</label>
+    <input ng-model="note.title" ng-change="saveNote()" 
+		   ng-model-options="{ debounce: 5000 }" >
   </md-input-container>
   <md-input-container>
     <label>Text</label>
-	<textarea ng-model="note.text" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+	<textarea ng-model="note.text" md-maxlength="150" rows="5" 
+			  ng-change="saveNote()"
+			  ng-model-options="{ debounce: 5000 }" md-select-on-focus></textarea>
   </md-input-container>
 </div>
