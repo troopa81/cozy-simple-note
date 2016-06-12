@@ -7,6 +7,10 @@ app.config(function($routeProvider, $locationProvider){
 			templateUrl : 'editNote.html', 
 			controller : 'editController'
 		}) 
+		.when ( '/edit', {
+			templateUrl : 'editNote.html', 
+			controller : 'editController'
+		}) 
   		.otherwise( {
 			templateUrl : 'listNotes.html', 
 			controller : 'mainController'
@@ -48,14 +52,25 @@ app.controller('editController', function($scope, $routeParams, $http, $timeout)
 	// save in back-end on modifications
 	$scope.saveNote = function() {
 		
-		console.log("coucou")
-		// get notes
+		var url = "note";
+
+		// update existing note, else create a new one
+		if ( $scope.note.id ) {
+			url += "/" + $scope.note.id; 
+		}
+
+		// update backend
 		$http({
-			method: 'PUT',
-			url: 'note/' + $scope.note.id,
+			method: $scope.note.id ? 'PUT' : 'POST',
+			url: url,
 			data: $scope.note
 		}).then(function successCallback(response) {
-			console.log("test")
+
+			// update note id on creation
+			if ( !$scope.note.id ){
+				$scope.note = response.data;
+			}
+
 		}, function errorCallback(response) {
 			console.log("error=" + response);
 		});
