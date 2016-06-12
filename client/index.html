@@ -26,6 +26,9 @@
 			<md-button class="md-icon-button" aria-label="More" href="/edit" >
 			  <md-icon md-svg-icon="app/assets/icons/add.svg"></md-icon>
 			</md-button>
+			<md-button class="md-icon-button"  ng-show="canDelete()" ng-click="deleteCurrentNote()" aria-label="More" >
+			  <md-icon md-svg-icon="app/assets/icons/delete.svg"></md-icon>
+			</md-button>
 		  </div>
 		</md-toolbar>
 

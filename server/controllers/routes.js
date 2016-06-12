@@ -10,7 +10,8 @@ module.exports = {
     },
 	'note/:noteId' : {
 		get: note.find,
-		put: note.update
+		put: note.update,
+        delete: note.deleteNote,
 	},
 	'notes': {
         get: note.list,

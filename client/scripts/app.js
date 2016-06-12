@@ -22,9 +22,32 @@ app.config(function($routeProvider, $locationProvider){
 
 app.controller('mainController', function($scope, $http, $location) {
 
+	$scope.canDelete = function(){
+		return $location.path().startsWith('/edit');
+	}; 
+
 	$scope.edit = function ( noteId ) {
 		$location.path( "edit/" + noteId );
 	};
+
+	$scope.deleteCurrentNote = function(){
+		
+		var noteId = $location.path().slice( $location.path().lastIndexOf( "/" ) + 1 ); 
+		console.log( "delete:" + noteId );
+
+		// delete note from backend
+		$http({
+			method: 'DELETE',
+			url: 'note/' + noteId
+		}).then(function successCallback(response){
+			console.log("toto");
+			$location.path("/");
+			
+		}, function errorCallback(response) {
+			console.log("error=" + response);
+			$location.path("/");
+		});
+	}
 
 	// get notes
 	$http({
@@ -44,7 +67,7 @@ app.controller('editController', function($scope, $routeParams, $http, $timeout)
 		method: 'GET',
 		url: 'note/' + $routeParams.noteId
 	}).then(function successCallback(response) {
-		$scope.note = response.data
+		$scope.note = response.data;
 	}, function errorCallback(response) {
 		console.log("error=" + response);
 	});
